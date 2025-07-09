@@ -1,4 +1,5 @@
 import Header from "@/components/Header/Header";
+import Messages from "@/components/Messages/Messages";
 import React from "react";
 
 const Home = () => {
@@ -6,6 +7,7 @@ const Home = () => {
     <>
       <main>
         <Header />
+        <Messages />
       </main>
     </>
   );
