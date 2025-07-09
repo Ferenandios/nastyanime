@@ -1,0 +1,7 @@
+.ansoc {
+  @apply flex items-center h-full ml-[42px];
+}
+
+.title {
+  @apply text-[24px];
+}
