@@ -1,0 +1,9 @@
+@reference "tailwindcss";
+
+.ansoc {
+  @apply flex justify-center mt-[30px];
+}
+
+.messages {
+  @apply flex flex-col justify-end w-[600px] h-[600px] overflow-hidden;
+}
