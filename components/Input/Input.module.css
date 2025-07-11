@@ -1,0 +1,13 @@
+@reference "tailwindcss";
+
+.ansoc {
+  @apply fixed bottom-[100px] flex justify-center w-screen;
+}
+
+.form {
+  @apply flex flex-col w-[600px];
+}
+
+.input {
+  @apply w-full rounded border-[#BABABA] border-2 px-[8px];
+}
