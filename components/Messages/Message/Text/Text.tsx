@@ -1,9 +1,9 @@
 import React, { FC, JSX } from "react";
 
-const Text: FC = (): JSX.Element => {
+const Text: FC<{ text: string }> = ({ text }): JSX.Element => {
   return (
     <>
-      <div>Всем привет! С вами Настюша Геймерша!</div>
+      <div>{text}</div>
     </>
   );
 };
