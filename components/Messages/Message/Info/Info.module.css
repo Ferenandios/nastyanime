@@ -1,0 +1,9 @@
+@reference "tailwindcss";
+
+.info {
+  @apply text-[#000000a1] w-full h-[50px];
+}
+
+.date {
+  @apply ml-[10px];
+}
