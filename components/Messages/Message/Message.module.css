@@ -1,0 +1,5 @@
+@reference "tailwindcss";
+
+.message {
+  @apply text-[12px] w-full bg-[#FDFFD2] p-[16px] mt-[8px] first:mt-0;
+}
