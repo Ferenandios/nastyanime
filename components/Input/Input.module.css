@@ -1,7 +1,7 @@
 @reference "tailwindcss";
 
 .ansoc {
-  @apply fixed bottom-[100px] flex justify-center w-screen;
+  @apply flex justify-center w-screen mt-[30px];
 }
 
 .form {
