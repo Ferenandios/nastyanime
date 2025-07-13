@@ -8,4 +8,5 @@ export interface Message {
 export type MessageContextType = {
   messages: Message[];
   addMessage: (message: Message) => void;
+  getMessages: () => void;
 };
