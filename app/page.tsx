@@ -10,8 +10,10 @@ const Home = () => {
       <main>
         <Header />
         <MessageProvider>
-          <Messages />
-          <Input />
+          <div className="fixed bottom-[100px]">
+            <Messages />
+            <Input />
+          </div>
         </MessageProvider>
       </main>
     </>
