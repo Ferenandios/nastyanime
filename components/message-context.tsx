@@ -1,7 +1,13 @@
 "use client";
 import { Message, MessageContextType } from "@/types/types";
-// 1. Создаём контекст и типы
-import { createContext, useContext, useState, ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  useEffect,
+} from "react";
+import axios from "axios";
 
 const MessageContext = createContext<MessageContextType | undefined>(undefined);
 
@@ -13,8 +19,24 @@ export function MessageProvider({ children }: { children: ReactNode }) {
     setMessages((prev) => [...prev, message]);
   };
 
+  // Функция для загрузки сообщений с сервера
+  const getMessages = async () => {
+    try {
+      const response = await axios.get("http://localhost:4000");
+      const newMessages = response.data as Message[];
+      setMessages(newMessages); // Полностью заменяем сообщения
+    } catch (error) {
+      console.error("Ошибка при загрузке сообщений:", error);
+    }
+  };
+
+  // Опционально: загружаем сообщения при монтировании
+  useEffect(() => {
+    getMessages();
+  }, []);
+
   return (
-    <MessageContext.Provider value={{ messages, addMessage }}>
+    <MessageContext.Provider value={{ messages, addMessage, getMessages }}>
       {children}
     </MessageContext.Provider>
   );
