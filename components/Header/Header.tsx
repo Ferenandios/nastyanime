@@ -12,6 +12,7 @@ const Header: FC = (): JSX.Element => {
           src="/charlotte-z.jpg"
           width={100}
           height={99}
+          priority
         />
         <Title />
       </div>
