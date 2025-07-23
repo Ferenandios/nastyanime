@@ -3,12 +3,12 @@ import React, { FC, JSX, useEffect } from "react";
 import { useState } from "react";
 import { useMessages } from "../message-context";
 import styles from "./Input.module.css";
-import { io } from "socket.io-client";
+import { io, Socket } from "socket.io-client";
 import axios from "axios";
 
 const Input: FC = (): JSX.Element => {
   const [inputValue, setInputValue] = useState("");
-  const [socket, setSocket] = useState<any>(undefined);
+  const [socket, setSocket] = useState<Socket | undefined>(undefined);
   const { addMessage } = useMessages();
 
   function getFormattedDate() {
@@ -45,14 +45,13 @@ const Input: FC = (): JSX.Element => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (inputValue.trim()) {
+    if (inputValue.trim() && socket) {
       const message = {
         text: inputValue,
         username: "Фанатка",
         date: getFormattedDate(),
       };
       axios.post("http://localhost:4000", message);
-      // addMessage(message);
       socket.emit("send-message", message);
       setInputValue("");
     }
