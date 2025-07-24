@@ -21,10 +21,13 @@ export function MessageProvider({ children }: { children: ReactNode }) {
 
   // Функция для загрузки сообщений с сервера
   const getMessages = async () => {
+    const url = process.env.NEXT_PUBLIC_URL;
     try {
-      const response = await axios.get("http://localhost:4000");
-      const newMessages = response.data as Message[];
-      setMessages(newMessages); // Полностью заменяем сообщения
+      if (url) {
+        const response = await axios.get(url);
+        const newMessages = response.data as Message[];
+        setMessages(newMessages); // Полностью заменяем сообщения
+      }
     } catch (error) {
       console.error("Ошибка при загрузке сообщений:", error);
     }

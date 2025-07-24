@@ -10,6 +10,7 @@ const Input: FC = (): JSX.Element => {
   const [inputValue, setInputValue] = useState("");
   const [socket, setSocket] = useState<Socket | undefined>(undefined);
   const { messages, addMessage } = useMessages();
+  const url = process.env.NEXT_PUBLIC_URL;
 
   function getFormattedDate() {
     const now = new Date();
@@ -33,7 +34,7 @@ const Input: FC = (): JSX.Element => {
   }
 
   useEffect(() => {
-    const socket = io("http://localhost:4000");
+    const socket = io(url);
     setSocket(socket);
     socket.on("receive-message", (message) => {
       addMessage(message);
@@ -52,7 +53,9 @@ const Input: FC = (): JSX.Element => {
         username: "Фанатка",
         date: getFormattedDate(),
       };
-      axios.post("http://localhost:4000", message);
+      if (url) {
+        axios.post(url, message);
+      }
       socket.emit("send-message", message);
       setInputValue("");
     }
