@@ -9,7 +9,7 @@ import axios from "axios";
 const Input: FC = (): JSX.Element => {
   const [inputValue, setInputValue] = useState("");
   const [socket, setSocket] = useState<Socket | undefined>(undefined);
-  const { addMessage } = useMessages();
+  const { messages, addMessage } = useMessages();
 
   function getFormattedDate() {
     const now = new Date();
@@ -47,6 +47,7 @@ const Input: FC = (): JSX.Element => {
     e.preventDefault();
     if (inputValue.trim() && socket) {
       const message = {
+        id: messages.length,
         text: inputValue,
         username: "Фанатка",
         date: getFormattedDate(),
