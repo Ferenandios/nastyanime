@@ -15,19 +15,27 @@ const Input: FC = (): JSX.Element => {
   function getFormattedDate() {
     const now = new Date();
 
+    // Получаем смещение для Москвы (GMT+3) в миллисекундах
+    const mskOffset = 3 * 60 * 60 * 1000; // +3 часа в миллисекундах
+
+    // Создаем дату с учетом московского времени
+    const mskDate = new Date(
+      now.getTime() + now.getTimezoneOffset() * 60 * 1000 + mskOffset
+    );
+
     // Получаем день, месяц и год (двузначный)
-    const day = String(now.getDate()).padStart(2, "0");
-    const month = String(now.getMonth() + 1).padStart(2, "0");
-    const year = String(now.getFullYear()).slice(-2);
+    const day = String(mskDate.getDate()).padStart(2, "0");
+    const month = String(mskDate.getMonth() + 1).padStart(2, "0");
+    const year = String(mskDate.getFullYear()).slice(-2);
 
     // Получаем день недели (сокращенный до 3 букв)
     const daysOfWeek = ["Вск", "Пнд", "Втр", "Срд", "Чтв", "Птн", "Сбт"];
-    const dayOfWeek = daysOfWeek[now.getDay()];
+    const dayOfWeek = daysOfWeek[mskDate.getDay()];
 
     // Получаем часы, минуты и секунды
-    const hours = String(now.getHours()).padStart(2, "0");
-    const minutes = String(now.getMinutes()).padStart(2, "0");
-    const seconds = String(now.getSeconds()).padStart(2, "0");
+    const hours = String(mskDate.getHours()).padStart(2, "0");
+    const minutes = String(mskDate.getMinutes()).padStart(2, "0");
+    const seconds = String(mskDate.getSeconds()).padStart(2, "0");
 
     // Формируем строку
     return `${day}/${month}/${year} ${dayOfWeek} ${hours}:${minutes}:${seconds}`;
