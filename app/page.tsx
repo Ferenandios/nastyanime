@@ -1,3 +1,4 @@
+import Background from "@/components/Background/Background";
 import Header from "@/components/Header/Header";
 import Input from "@/components/Input/Input";
 import { MessageProvider } from "@/components/message-context";
@@ -9,6 +10,7 @@ const Home = () => {
   return (
     <>
       <main>
+        <Background />
         <Header />
         <MessageProvider>
           <div className="hidden fixed bottom-[100px] lg:block">
