@@ -5,5 +5,5 @@
 }
 
 .messages {
-  @apply flex flex-wrap justify-end w-[600px] h-[600px] overflow-y-scroll;
+  @apply flex flex-col justify-end w-[600px] h-[600px] overflow-hidden;
 }
