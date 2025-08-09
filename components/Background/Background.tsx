@@ -12,6 +12,15 @@ const Background: FC = (): JSX.Element => {
             src="/kioku.gif"
             width={300}
             height={250}
+            priority
+          />
+          <Image
+            className="absolute bottom-[10px] left-[100px] w-auto h-auto"
+            alt="Gif"
+            src="/mihanemoi.gif"
+            width={173}
+            height={59}
+            priority
           />
         </div>
       </div>
