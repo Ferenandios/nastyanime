@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { FC, JSX } from "react";
+import { FC, JSX } from "react";
 import styles from "./Mobile.module.css";
 
 const Mobile: FC = (): JSX.Element => {
