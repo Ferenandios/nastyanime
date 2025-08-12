@@ -3,7 +3,7 @@ import React, { FC, JSX } from "react";
 import Title from "./Title/Title";
 import styles from "./Header.module.css";
 
-const Header: FC = (): JSX.Element => {
+const Header: FC<{ title?: string }> = ({ title }): JSX.Element => {
   return (
     <>
       <div className={styles.header}>
@@ -14,7 +14,7 @@ const Header: FC = (): JSX.Element => {
           height={99}
           priority
         />
-        <Title />
+        <Title title={title} />
       </div>
     </>
   );
